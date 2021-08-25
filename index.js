@@ -11,6 +11,7 @@ const bots = [
         arg: 'plant-vs-undead-token',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
+        currency: 'usd'
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
@@ -19,6 +20,7 @@ const bots = [
         arg: 'binancecoin',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
+        currency: 'usd'
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
@@ -27,6 +29,7 @@ const bots = [
         arg: 'coinary-token',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
+        currency: 'usd'
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
@@ -35,6 +38,7 @@ const bots = [
         arg: 'polychain-monsters',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
+        currency: 'usd'
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
@@ -43,6 +47,7 @@ const bots = [
         arg: 'smooth-love-potion',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 3,
+        currency: 'usd'
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
@@ -51,6 +56,7 @@ const bots = [
         arg: 'ethereum',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
+        currency: 'usd'
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
@@ -59,11 +65,21 @@ const bots = [
         arg: 'cryptocars',
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 3,
+        currency: 'usd'
+    },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'BUSD',
+        disc_token: process.env.BUSD_DISC_TOKEN,
+        arg: 'binance-usd',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 3,
+        currency: 'brl'
     },
 ]
 
 let updateBotName = async (bot, guild) => {
-    let price = await bot.getPrice(bot.arg, bot.decimals).catch(err => { console.log(err) })
+    let price = await bot.getPrice(bot.arg, bot.decimals, bot.currency).catch(err => { console.log(err) })
 
     if (!price) {
         console.log(`Update Error`)
