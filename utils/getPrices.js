@@ -4,14 +4,12 @@ const axios = require('axios')
 
 module.exports = {
     getCoinGeckoPrice: async (id, decimals) => { 
-        let res = await coinGeckoClient.simple.price({
-            ids: id,
-            vs_currencies: 'usd',
-        }).catch(err => { console.log(err) })
+        let res = await coinGeckoClient.coins.fetch(id).catch(err => { console.log(err) })
     
-        let price = parseFloat(res.data[id].usd)
-    
-        return price.toFixed(decimals)
+        return {
+            price: (parseFloat(res.data.market_data.current_price.usd).toFixed(decimals) + '').replace('.', ','),
+            price_change_percentage_24h: (parseFloat(res.data.market_data.price_change_percentage_24h).toFixed(2) + '').replace('.', ',')
+        }
     },
 
     getPancakeSwapPrice: async (contract, decimals) => {
@@ -19,6 +17,9 @@ module.exports = {
     
         let price = parseFloat(res.data.data.price)
         
-        return price.toFixed(decimals)
+        return {
+            price: price.toFixed(decimals),
+            price_change_percentage_24h: '-----'
+        }
     }
 }

@@ -8,8 +8,8 @@ const bots = [
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'PVU',
         disc_token: process.env.PVU_DISC_TOKEN,
-        arg: '0x31471e0791fcdbe82fbf4c44943255e923f1b794',
-        getPrice: getPrices.getPancakeSwapPrice,
+        arg: 'plant-vs-undead-token',
+        getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
     },
     {
@@ -32,8 +32,8 @@ const bots = [
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'PMON',
         disc_token: process.env.PMON_DISC_TOKEN,
-        arg: '0x1796ae0b0fa4862485106a0de9b654efe301d0b2',
-        getPrice: getPrices.getPancakeSwapPrice,
+        arg: 'polychain-monsters',
+        getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
     },
     {
@@ -57,9 +57,11 @@ const bots = [
 let updateBotName = async (bot, guild) => {
     let price = await bot.getPrice(bot.arg, bot.decimals).catch(err => { console.log(err) })
     
-    guild.me.setNickname(`${bot.symbol} - $${price}`).catch(err => { console.log(err) })
+    guild.me.setNickname(`${bot.symbol} - $${price.price}`).catch(err => { console.log(err) })
+    
+    bot.client.user.setActivity(`24H: ${price.price_change_percentage_24h}%`, { type: 'PLAYING' });
 
-    console.log(`Update ${guild.name} - ${bot.symbol} - $${price}`)
+    console.log(`Update ${guild.name} - ${bot.symbol} - $${price.price}`)
 }
 
 bots.forEach((el) => {
