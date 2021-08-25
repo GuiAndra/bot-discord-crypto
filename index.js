@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Discord = require("discord.js");
 let getPrices = require('./utils/getPrices')
 let interval;
@@ -6,42 +7,42 @@ const bots = [
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'PVU',
-        disc_token: 'ODc5ODE3NjI5OTI4Mzk0NzYy.YSVQBQ.fcwJoTdMeMWLgF3v4TuteKxwoU0',
+        disc_token: process.env.PVU_DISC_TOKEN,
         arg: '0x31471e0791fcdbe82fbf4c44943255e923f1b794',
         getPrice: getPrices.getPancakeSwapPrice
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'BNB',
-        disc_token: 'ODc5ODY3OTU2NDIxNjExNjIx.YSV-4w.fm3iW-7wo9d83PpatCaIBqiJICs',
+        disc_token: process.env.BNB_DISC_TOKEN,
         arg: 'binancecoin',
         getPrice: getPrices.getCoinGeckoPrice
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'CYT',
-        disc_token: 'ODc5ODkxMjI0NTkxNDcwNjI0.YSWUjw.HDWMg-mCDU-TV_0gAfM6iFpcHh8',
+        disc_token: process.env.CYT_DISC_TOKEN,
         arg: 'coinary-token',
         getPrice: getPrices.getCoinGeckoPrice
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'PMON',
-        disc_token: 'ODc5ODkxMDMxNDU2MzU0MzM0.YSWUYQ.Ffd3CDUMRjyd6hYXoG8gPKZdrs4',
+        disc_token: process.env.PMON_DISC_TOKEN,
         arg: '0x1796ae0b0fa4862485106a0de9b654efe301d0b2',
         getPrice: getPrices.getPancakeSwapPrice
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'SLP',
-        disc_token: 'ODc5ODkxMDkxMTI0NTE4OTEz.YSWUbw.BdHSHHKzMNBo5mWUZ-ikG0O-Iuo',
+        disc_token: process.env.SLP_DISC_TOKEN,
         arg: 'smooth-love-potion',
         getPrice: getPrices.getCoinGeckoPrice
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'ETH',
-        disc_token: 'ODc5ODkxMTQ1NDI0MDA3MTY4.YSWUfA.xZBwQk_m5x-C4YEE-SIXuqTJdjk',
+        disc_token: process.env.ETH_DISC_TOKEN,
         arg: 'ethereum',
         getPrice: getPrices.getCoinGeckoPrice
     },
