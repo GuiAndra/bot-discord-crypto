@@ -9,47 +9,53 @@ const bots = [
         symbol: 'PVU',
         disc_token: process.env.PVU_DISC_TOKEN,
         arg: '0x31471e0791fcdbe82fbf4c44943255e923f1b794',
-        getPrice: getPrices.getPancakeSwapPrice
+        getPrice: getPrices.getPancakeSwapPrice,
+        decimals: 2,
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'BNB',
         disc_token: process.env.BNB_DISC_TOKEN,
         arg: 'binancecoin',
-        getPrice: getPrices.getCoinGeckoPrice
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'CYT',
         disc_token: process.env.CYT_DISC_TOKEN,
         arg: 'coinary-token',
-        getPrice: getPrices.getCoinGeckoPrice
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'PMON',
         disc_token: process.env.PMON_DISC_TOKEN,
         arg: '0x1796ae0b0fa4862485106a0de9b654efe301d0b2',
-        getPrice: getPrices.getPancakeSwapPrice
+        getPrice: getPrices.getPancakeSwapPrice,
+        decimals: 2,
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'SLP',
         disc_token: process.env.SLP_DISC_TOKEN,
         arg: 'smooth-love-potion',
-        getPrice: getPrices.getCoinGeckoPrice
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 3,
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'ETH',
         disc_token: process.env.ETH_DISC_TOKEN,
         arg: 'ethereum',
-        getPrice: getPrices.getCoinGeckoPrice
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
     },
 ]
 
 let updateBotName = async (bot, guild) => {
-    let price = await bot.getPrice(bot.arg)
+    let price = await bot.getPrice(bot.arg, bot.decimals)
     guild.me.setNickname(`${bot.symbol} - $${price}`)
 }
 
