@@ -3,12 +3,12 @@ const coinGeckoClient = new coinGecko()
 const axios = require('axios')
 
 module.exports = {
-    getCoinGeckoPrice: async (id, decimals) => { 
+    getCoinGeckoPrice: async (id, decimals, currency) => { 
         let res = await coinGeckoClient.coins.fetch(id).catch(err => { console.log(err) })
 
-        let formatterCurrency = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD', maximumFractionDigits: decimals })
+        let formatterCurrency = Intl.NumberFormat('pt-BR', { style: 'currency', currency: currency, maximumFractionDigits: decimals })
 
-        let price = res.data.market_data.current_price.usd
+        let price = res.data.market_data.current_price[currency]
         let price_change_percentage_24h = res.data.market_data.price_change_percentage_24h
     
         return {
