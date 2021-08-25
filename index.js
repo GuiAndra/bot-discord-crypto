@@ -57,7 +57,7 @@ const bots = [
 let updateBotName = async (bot, guild) => {
     let price = await bot.getPrice(bot.arg, bot.decimals).catch(err => { console.log(err) })
     
-    guild.me.setNickname(`${bot.symbol} - $${price}`)
+    guild.me.setNickname(`${bot.symbol} - $${price}`).catch(err => { console.log(err) })
 
     console.log(`Update ${guild.name} - ${bot.symbol} - $${price}`)
 }
