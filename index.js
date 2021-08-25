@@ -56,6 +56,11 @@ const bots = [
 
 let updateBotName = async (bot, guild) => {
     let price = await bot.getPrice(bot.arg, bot.decimals).catch(err => { console.log(err) })
+
+    if (!price) {
+        console.log(`Update Error`)
+        return
+    }
     
     guild.me.setNickname(`${bot.symbol} - ${price.price}`).catch(err => { console.log(err) })
     
@@ -79,7 +84,7 @@ bots.forEach((el) => {
         
             interval = setInterval (async function () {
                 updateBotName(el, guild)
-            }, 20000)
+            }, 10000)
 
         })
         
