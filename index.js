@@ -57,7 +57,7 @@ const bots = [
 let updateBotName = async (bot, guild) => {
     let price = await bot.getPrice(bot.arg, bot.decimals).catch(err => { console.log(err) })
     
-    guild.me.setNickname(`${bot.symbol} - $${price.price}`).catch(err => { console.log(err) })
+    guild.me.setNickname(`${bot.symbol} - ${price.price}`).catch(err => { console.log(err) })
     
     bot.client.user.setActivity(`24H: ${price.price_change_percentage_24h}%`, { type: 'PLAYING' });
 
