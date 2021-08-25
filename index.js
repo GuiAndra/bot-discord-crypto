@@ -61,7 +61,7 @@ let updateBotName = async (bot, guild) => {
     
     bot.client.user.setActivity(`24H: ${price.price_change_percentage_24h}%`, { type: 'PLAYING' });
 
-    console.log(`Update ${guild.name} - ${bot.symbol} - $${price.price}`)
+    console.log(`Update ${guild.name} - ${bot.symbol} - ${price.price} ${price.price_change_percentage_24h}%`)
 }
 
 bots.forEach((el) => {
@@ -79,7 +79,7 @@ bots.forEach((el) => {
         
             interval = setInterval (async function () {
                 updateBotName(el, guild)
-            }, 60000)
+            }, 10000)
 
         })
         
