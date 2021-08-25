@@ -52,6 +52,14 @@ const bots = [
         getPrice: getPrices.getCoinGeckoPrice,
         decimals: 2,
     },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'CCAR',
+        disc_token: process.env.CCAR_DISC_TOKEN,
+        arg: 'cryptocars',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 3,
+    },
 ]
 
 let updateBotName = async (bot, guild) => {
