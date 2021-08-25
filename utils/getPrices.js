@@ -7,7 +7,7 @@ module.exports = {
         let res = await coinGeckoClient.simple.price({
             ids: id,
             vs_currencies: 'usd',
-        })
+        }).catch(err => { console.log(err) })
     
         let price = parseFloat(res.data[id].usd)
     
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getPancakeSwapPrice: async (contract, decimals) => {
-        let res = await axios.get(`https://api.pancakeswap.info/api/v2/tokens/${contract}`);
+        let res = await axios.get(`https://api.pancakeswap.info/api/v2/tokens/${contract}`).catch(err => { console.log(err) });
     
         let price = parseFloat(res.data.data.price)
         

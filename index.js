@@ -55,7 +55,7 @@ const bots = [
 ]
 
 let updateBotName = async (bot, guild) => {
-    let price = await bot.getPrice(bot.arg, bot.decimals)
+    let price = await bot.getPrice(bot.arg, bot.decimals).catch(err => { console.log(err) })
     guild.me.setNickname(`${bot.symbol} - $${price}`)
 }
 
@@ -64,11 +64,11 @@ bots.forEach((el) => {
     el.client.on('ready', async () => {
         console.log(`Logged in as ${el.client.user.tag}!`);        
         
-        let guilds = await el.client.guilds.fetch()
+        let guilds = await el.client.guilds.fetch().catch(err => { console.log(err) })
 
         guilds.forEach(async each => {
 
-            let guild = await el.client.guilds.fetch(each.id)
+            let guild = await el.client.guilds.fetch(each.id).catch(err => { console.log(err) })
 
             updateBotName(el, guild)
         
