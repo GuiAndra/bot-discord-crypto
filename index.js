@@ -69,6 +69,15 @@ const bots = [
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'WANA',
+        disc_token: process.env.WANA_DISC_TOKEN,
+        arg: 'wanaka-farm',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
+        currency: 'usd'
+    },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'BUSD',
         disc_token: process.env.BUSD_DISC_TOKEN,
         arg: 'binance-usd',
