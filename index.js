@@ -117,7 +117,7 @@ bots.forEach((el) => {
         
             interval = setInterval (async function () {
                 updateBotName(el, guild)
-            }, 30000)
+            }, 60000)
 
         })
         
