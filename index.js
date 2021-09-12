@@ -85,15 +85,6 @@ const bots = [
         decimals: 3,
         currency: 'brl'
     },
-    {
-        client: new Discord.Client({ intents: ["GUILDS"] }),
-        symbol: 'CTH',
-        disc_token: process.env.CTH_DISC_TOKEN,
-        arg: 'crypto-hounds',
-        getPrice: getPrices.getCoinGeckoPrice,
-        decimals: 3,
-        currency: 'usd'
-    },
 ]
 
 let updateBotName = async (bot, guild) => {
