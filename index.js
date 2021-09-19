@@ -164,6 +164,9 @@ let updateBotName = async (bot, guild) => {
 //Atualiza cotações das moedas
 let updatePrice = async (bot) => {
     let price = await bot.getPrice(bot.arg, bot.decimals, bot.currency).catch(err => { console.log(err) })
+    
+    if (! price) return
+
     bot.price = price.price
     bot.price_change_percentage_24h = price.price_change_percentage_24h
 }
