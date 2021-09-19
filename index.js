@@ -95,6 +95,50 @@ let bots = [
     },
     {
         client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'THG',
+        disc_token: process.env.THG_DISC_TOKEN,
+        arg: 'thetan-arena',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
+        currency: 'usd',
+        price: 0,
+        price_change_percentage_24h: 0
+    },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'KAI',
+        disc_token: process.env.KAI_DISC_TOKEN,
+        arg: 'kardiachain',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
+        currency: 'usd',
+        price: 0,
+        price_change_percentage_24h: 0
+    },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'LZ',
+        disc_token: process.env.LZ_DISC_TOKEN,
+        arg: 'launchzone',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
+        currency: 'usd',
+        price: 0,
+        price_change_percentage_24h: 0
+    },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
+        symbol: 'GALA',
+        disc_token: process.env.GALA_DISC_TOKEN,
+        arg: 'gala',
+        getPrice: getPrices.getCoinGeckoPrice,
+        decimals: 2,
+        currency: 'usd',
+        price: 0,
+        price_change_percentage_24h: 0
+    },
+    {
+        client: new Discord.Client({ intents: ["GUILDS"] }),
         symbol: 'BUSD',
         disc_token: process.env.BUSD_DISC_TOKEN,
         arg: 'binance-usd',
